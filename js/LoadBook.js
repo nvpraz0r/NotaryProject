@@ -19,6 +19,10 @@ function loadBook(filename,displayName){
             // 
             currentBook = xhr.responseText;
 
+            // get various stats for the txt that is being loaded
+            // getDocStats(currentBook);
+
+
             // remove line breaks and carriage returns then replace with a <br>
             currentBook = currentBook.replace(/(?:\r\n|\r|\n)/g, '<br>')
 
