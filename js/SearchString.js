@@ -24,5 +24,4 @@ function loadBook(filename,displayName){
             element.scrollTop = 0;
         }
     };
-
 }
