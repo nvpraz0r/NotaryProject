@@ -38,6 +38,9 @@ function getDocStats(fileContent){
     var wordCount = document.getElementById("wordCount");
     var charCount = document.getElementById("charCount");
 
+    var mostUsed = document.getElementById("mostUsed");
+    var leastUsed = document.getElementById("leastUsed");
+
     let text = fileContent.toLowerCase();
     let wordArray = text.match(/\b\S+\b/g);
     let wordDictionary = {};
@@ -51,9 +54,42 @@ function getDocStats(fileContent){
             wordDictionary[wordValue] = 1;
         }
     }
+
+    // sort array
+    let wordList = sortProperies(wordDictionary);
+
+    // return the top 5 and bottom 5 words
+    var topFiveWords = wordList.slice(0,6);
+    var leastFiveWords = wordList.slice(-6,wordList.length);
+
+    // write the values to the page
+    ulTemplate(topFiveWords, mostUsed);
+    ulTemplate(leastFiveWords, leastUsed);
 }
 
 // 
 function sortProperies(wordDictionary){
+    
+    // first convert the object to an array
+    let rtnArray = Object.defineProperty(obj);
 
+    // sort the array
+    rtnArray.sort(function (first, second){
+        return second [1] - first[1];
+    });
+
+    return rtnArray;
+}
+
+function ulTemplate(items, element){
+
+    let rowTemplate = document.getElementById("template-ul-items");
+    let templateHTML = rowTemplate.innerHTML;
+    let resultsHTML = "";
+
+    for(i = 0; i < items.length - 1; i++){
+        resultsHTML += templateHTML.replace('{{val}}', items[i][0] + " : " + items[i][1] + "time(s)");
+    }
+
+    element.innerHTML = resultsHTML;
 }
