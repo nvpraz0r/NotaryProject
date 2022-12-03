@@ -18,14 +18,14 @@ function loadBook(filename,displayName){
 
             // 
             currentBook = xhr.responseText;
-            
+
             // remove line breaks and carriage returns then replace with a <br>
             currentBook = currentBook.replace(/(?:\r\n|\r|\n)/g, '<br>')
 
             // set content to txt contents
             document.getElementById("fileContent").innerHTML = currentBook;
 
-
+            // scroll to the top of the content
             var element = document.getElementById("fileContent");
             element.scrollTop = 0;
         }
