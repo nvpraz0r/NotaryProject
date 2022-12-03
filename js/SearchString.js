@@ -15,10 +15,16 @@ function loadBook(filename,displayName){
 
     xhr.onreadystatechange = function () {
         if(xhr.readyState == 4 && xhr.status == 200){
+
             // 
             currentBook = xhr.responseText;
+            
+            // remove line breaks and carriage returns then replace with a <br>
+            currentBook = currentBook.replace(/(?:\r\n|\r|\n)/g, '<br>')
+
             // set content to txt contents
             document.getElementById("fileContent").innerHTML = currentBook;
+
 
             var element = document.getElementById("fileContent");
             element.scrollTop = 0;
