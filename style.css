@@ -18,6 +18,7 @@ img{
 }
 
 .displayBox{
+    height: 900px;
     width: 100%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
